@@ -11,11 +11,22 @@ namespace TipCalculator
       // Ask how much the bill
       Console.WriteLine("How much was your  meal");
       var total = Console.ReadLine();
+      //Check if the input was  correct (a number).
+      double billTotal;
+      var isValid = Double.TryParse(total, out billTotal);
+      if (!isValid)
+      {
+        Console.WriteLine("That is not a number,  try again");
+        total = Console.ReadLine();
+        billTotal = Double.Parse(total);
+      }
+
       //how was the service?
       Console.WriteLine("How was your service?");
+      //okay, good, great
       Console.WriteLine("okay, good, or great");
-      var service = Console.ReadLine();
-      //okay, good, great, default
+      var service = Console.ReadLine().ToLower();
+      //check the casing of the response
       // calculate tip based on level of service
       var tipPercentage = 0.15;
       if (service == "okay")
@@ -31,9 +42,9 @@ namespace TipCalculator
         tipPercentage = 0.25;
       }
       // calculate 18%
-      var tip = double.Parse(total) * tipPercentage;
+      var tip = billTotal * tipPercentage;
       // add tip to total
-      var grandTotal = tip + double.Parse(total);
+      var grandTotal = tip + billTotal;
       //display the  result
       //tipPertcentage * 100 will give the correct value
       var tipToDisplay = tipPercentage * 100;
