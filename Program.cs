@@ -30,8 +30,6 @@ namespace TipCalculator
       {
         tipPercentage = 0.25;
       }
-
-
       // calculate 18%
       var tip = double.Parse(total) * tipPercentage;
       // add tip to total
